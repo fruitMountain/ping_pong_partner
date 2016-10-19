@@ -5,12 +5,12 @@
 // code will connect 2 motors constantly spinning at the same speed, controlled with pot
 // and also 2 servos used as a gate to feed out ping pong balls
 
-include <servo.h>
+#include <Servo.h>
 
 int motor1 = 4;
 int motor2 = 6;
-int servo1 = 8;
-int servo2 = 10;
+int servo1Pin = 8;
+int servo2Pin = 10;
 
 int potPin = 0;
 int motorValue;
@@ -22,11 +22,9 @@ Servo servo2;
 void setup(){
  pinMode(motor1, OUTPUT);
  pinMode(motor2, OUTPUT);
- pinMode(servo1, OUTPUT);
- pinMode(servo2, OUTPUT);
 
- servo1.attach(servo1);
- servo2.attach(servo2);
+ servo1.attach(servo1Pin);
+ servo2.attach(servo2Pin);
 }
 
 
@@ -39,7 +37,7 @@ void loop(){
 void spinMotors(){
   //reads a pot and writes that speed to both motors
 
- motorValue = analogread(potpin);
+ motorValue = analogRead(potPin);
 
  digitalWrite(motor1, motorValue);
  digitalWrite(motor2, motorValue);
